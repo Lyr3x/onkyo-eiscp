@@ -494,7 +494,7 @@ class Receiver(eISCP):
         event = threading.Event()
         result = []
         self._queue.put((iscp_message, event, result))
-        # event.wait()
+        event.wait()
         if isinstance(result[0], Exception):
             raise result[0]
         return result[0]
