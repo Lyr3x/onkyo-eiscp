@@ -470,7 +470,7 @@ class Receiver(eISCP):
             self._thread.start()
 
     def disconnect(self):
-        self._stop = False
+        self._stop = True
         self._thread.join()
         self._thread = None
 
@@ -494,7 +494,7 @@ class Receiver(eISCP):
         event = threading.Event()
         result = []
         self._queue.put((iscp_message, event, result))
-        event.wait()
+        # event.wait()
         if isinstance(result[0], Exception):
             raise result[0]
         return result[0]
