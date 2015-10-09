@@ -470,7 +470,7 @@ class Receiver(eISCP):
             self._thread.start()
 
     def disconnect(self):
-        self._stop = True
+        self._stop = False
         self._thread.join()
         self._thread = None
 
